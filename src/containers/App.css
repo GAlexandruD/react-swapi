@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Starjedi';
+  src: url('Starjedi.ttf')  format('truetype')
+}
+
+#first {
+  font-family: 'Starjedi';
+}
+
+
+@media only screen and (max-width: 600px) {
+#title {
+  font-size: 1.7rem;
+}
+}
