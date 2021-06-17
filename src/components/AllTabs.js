@@ -1,28 +1,27 @@
 import {Tab, Tabs} from 'react-bootstrap';
 import ItemList from './ItemList';
 
-const AllTabs = ({tabChange}) => {
-    
+const AllTabs = ({tabChange, kk, ll}) => {
     return (
         <div>
             <Tabs defaultActiveKey='planets' onSelect={tabChange}>            
                 <Tab eventKey="planets" title="Planets">
-                    <h3>Planets details</h3>
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
-                <Tab eventKey="spaceships" title="Spaceships">
-                    <h3>Spaceships details</h3>
+                <Tab eventKey="starships" title="Starships">
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
                 <Tab eventKey="vehicles" title="Vehicles">
-                    <h3>Vehicles details</h3>
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
                 <Tab eventKey="people" title="People">
-                    <h3>People details</h3>
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
                 <Tab eventKey="films" title="Films">
-                    <h3>Films details</h3>
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
                 <Tab eventKey="species" title="Species">
-                    <h3>Species details</h3>
+                    <ItemList props= {ll} ak={kk} />
                 </Tab>
             </Tabs>
         </div>

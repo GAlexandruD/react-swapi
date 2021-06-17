@@ -2,13 +2,8 @@ import { Component } from 'react';
 import './App.css';
 import AllTabs from '../components/AllTabs';
 import {Badge, Container, Row, Col} from 'react-bootstrap';
-import ItemList from '../components/ItemList';
-import {whaaat} from '../components/data';
-import Item from '../components/Item';
+import {links} from '../components/links'
 // import "bootstrap/dist/css/bootstrap.css";
-
-
-console.log('Joe',whaaat.results)
 
 class App extends Component {
   constructor() {
@@ -21,16 +16,33 @@ class App extends Component {
   }
 
 
-  // componentDidMount() {
-  //   fetch('https://swapi.py4e.com/api/planets/')
-  //   .then(response => response.json())
-  //   .then(items => this.setState({activeItems: items.results}))
-    
-  // }
+  componentDidMount() {
+    fetch(links[this.state.activeKey])
+    .then(response => response.json())
+    .then(items => this.setState({activeItems: items.results}))
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.activeKey !== this.state.activeKey) {
+      fetch(links[this.state.activeKey])
+      .then(response => response.json())
+      .then(items => this.setState({activeItems: items.results}))
+            
+    }
+    // if (this.props.activeItems !== prevProps.activeItems) {
+    //   fetch(links[this.state.activeKey])
+    //   .then(response => response.json())
+    //   .then(items => this.setState({activeItems: items.results}))
+    //   console.log(prevProps.activeItems, 'component did update', this.state.activeItems)
+    // }
+    
+  }
 
   handleSelect  = (key) => {
-    this.setState({activeKey: key})
+    if (key !== this.state.activeKey) {
+      this.setState({activeKey: key});
+    }
+    
   }
 
   render() {
@@ -43,9 +55,9 @@ class App extends Component {
                 <Badge bg="secondary">@</Badge>
               </h1>
               <input type='search' placeholder={`Search ${this.state.activeKey}`}></input>
-              <p>De aici ar trebui sa apara.</p>
-              <ItemList props= {whaaat.results} />
-              <p>Dupa ItemList</p>
+              <hr></hr>
+              <AllTabs tabChange={this.handleSelect} kk={this.state.activeKey} ll={this.state.activeItems}/>
+              <hr></hr>
               
             </Col>
           </Row>
