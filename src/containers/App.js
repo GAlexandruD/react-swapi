@@ -29,13 +29,6 @@ class App extends Component {
       .then(items => this.setState({activeItems: items.results}))
             
     }
-    // if (this.props.activeItems !== prevProps.activeItems) {
-    //   fetch(links[this.state.activeKey])
-    //   .then(response => response.json())
-    //   .then(items => this.setState({activeItems: items.results}))
-    //   console.log(prevProps.activeItems, 'component did update', this.state.activeItems)
-    // }
-    
   }
 
   handleSelect  = (key) => {
